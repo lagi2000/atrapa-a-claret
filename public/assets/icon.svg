@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Atrapa a Claret">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#19b9ee"/>
+      <stop offset="1" stop-color="#073d82"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffe98a"/>
+      <stop offset=".48" stop-color="#ffc02f"/>
+      <stop offset="1" stop-color="#d97808"/>
+    </linearGradient>
+    <linearGradient id="fire" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#fff6a8"/>
+      <stop offset=".42" stop-color="#ffbb19"/>
+      <stop offset="1" stop-color="#e63b19"/>
+    </linearGradient>
+    <filter id="shadow" x="-30%" y="-30%" width="160%" height="170%">
+      <feDropShadow dx="0" dy="14" stdDeviation="12" flood-color="#001943" flood-opacity=".55"/>
+    </filter>
+  </defs>
+  <rect width="512" height="512" rx="104" fill="url(#sky)"/>
+  <path d="M33 363C126 303 196 339 265 293c74-49 132-41 214-9v194H33z" fill="#0a2759" opacity=".42"/>
+  <circle cx="256" cy="226" r="171" fill="#06285e" stroke="url(#gold)" stroke-width="18" filter="url(#shadow)"/>
+  <circle cx="256" cy="226" r="146" fill="#0a58a0" stroke="#fff4b3" stroke-width="4" opacity=".96"/>
+  <path d="M257 55c26 50-9 69 17 101 12-32 41-42 42-80 46 53 54 100 27 142-20 31-52 48-88 48-58 0-105-43-105-99 0-44 26-77 62-111-3 45 11 56 25 72 13-22 16-45 20-73z" fill="url(#fire)" stroke="#fff2a4" stroke-width="7" stroke-linejoin="round"/>
+  <path d="M255 132c22 30 3 42 18 62 7-17 20-24 24-39 15 22 19 45 7 64-11 17-28 25-49 25-30 0-54-22-54-51 0-21 12-40 30-58 0 24 8 33 16 43 7-14 7-28 8-46z" fill="#fff9c9" opacity=".9"/>
+  <text x="256" y="333" text-anchor="middle" font-family="Arial Rounded MT Bold, Trebuchet MS, sans-serif" font-size="52" font-weight="900" fill="#fff" stroke="#05245c" stroke-width="4" paint-order="stroke">ATRAPA A</text>
+  <text x="256" y="401" text-anchor="middle" font-family="Arial Rounded MT Bold, Trebuchet MS, sans-serif" font-size="73" font-weight="900" fill="url(#gold)" stroke="#542900" stroke-width="5" paint-order="stroke">CLARET</text>
+</svg>

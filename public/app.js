@@ -19,6 +19,7 @@
   let persist = loadPersist();
   let audioCtx = null;
  let answerTimer=null, questionToken=0;
+ let deferredInstallPrompt=null;
  function inGame(){return document.getElementById('screen-game').classList.contains('active');}
  function pose(name){document.getElementById('claretImg').src='assets/claret-'+name+'.webp';}
  function nextOnce(fn){return function(){if(this.disabled)return;this.disabled=true;fn();};}
@@ -170,13 +171,32 @@
     tone('click');persist.games=(persist.games||0)+1;savePersist();Object.assign(state,{phase:1,phaseScore:0,lives:3,jokers:{'5050':true,hint:true,swap:true},usedThisQuestion:false,current:null,renderedOptions:[],usedQuestionIds:new Set(),gameId:Date.now(),totalCorrect:0,totalWrong:0,locked:false});showPhaseIntro()
   }
 
-  function handleAction(action){if(action==='home'){tone('click');showScreen('screen-home')}if(action==='play')startGame();if(action==='how'){tone('click');showScreen('screen-how')}if(action==='credits'){tone('click');showScreen('screen-credits')}if(action==='begin-phase')beginPhase();if(action==='propose'){tone('click');if(persist.everCompleted)showScreen('screen-propose');else alert('Esta opción se desbloquea al completar las cinco fases.')}}
+  function setInstallVisible(visible){document.querySelectorAll('.pwa-install').forEach(b=>{b.hidden=!visible;b.classList.toggle('available',visible)})}
+  async function installApp(){
+    tone('click');
+    if(deferredInstallPrompt){
+      deferredInstallPrompt.prompt();
+      await deferredInstallPrompt.userChoice;
+      deferredInstallPrompt=null;
+      setInstallVisible(false);
+      return;
+    }
+    const ios=typeof navigator!=='undefined'&&/iphone|ipad|ipod/i.test(navigator.userAgent||'');
+    if(ios)alert('Para instalar Atrapa a Claret, pulsa Compartir y después «Añadir a pantalla de inicio».');
+  }
+  function handleAction(action){if(action==='home'){tone('click');showScreen('screen-home')}if(action==='play')startGame();if(action==='how'){tone('click');showScreen('screen-how')}if(action==='credits'){tone('click');showScreen('screen-credits')}if(action==='begin-phase')beginPhase();if(action==='install')installApp();if(action==='propose'){tone('click');if(persist.everCompleted)showScreen('screen-propose');else alert('Esta opción se desbloquea al completar las cinco fases.')}}
   document.addEventListener('click',e=>{const a=e.target.closest('[data-action]');if(a)handleAction(a.dataset.action);const l=e.target.closest('[data-lifeline]');if(l)useLifeline(l.dataset.lifeline)});
   document.getElementById('soundToggle').addEventListener('click',()=>setSound(!state.sound));
   document.getElementById('proposalForm').addEventListener('submit',e=>{e.preventDefault();const f=new FormData(e.currentTarget);const body=`Nueva pregunta propuesta · Atrapa a Claret\n\nPregunta: ${f.get('question')}\nA: ${f.get('a')}\nB: ${f.get('b')}\nC: ${f.get('c')}\nD: ${f.get('d')}\nCorrecta: ${f.get('correct')}\nFuente: ${f.get('source')}\nN.º Autobiografía: ${f.get('aut')||'-'}\nCentro: ${f.get('school')||'-'}\nCurso: ${f.get('course')||'-'}`;location.href=`mailto:luisalfonsogarcia@claretsevilla.org?subject=${encodeURIComponent('Nueva pregunta propuesta · Atrapa a Claret')}&body=${encodeURIComponent(body)}`});
   // keyboard accessibility: A-D selects answers, 1-3 lifelines while a question is active
   window.addEventListener('keydown',e=>{if(e.repeat||e.ctrlKey||e.metaKey||e.altKey||e.target.closest('input,textarea,select,[contenteditable=true]'))return;if(e.key==='Escape'&&!document.getElementById('screen-home').classList.contains('active')){showScreen('screen-home');return}if(!document.getElementById('screen-game').classList.contains('active'))return;const map={a:0,b:1,c:2,d:3};if(map[e.key.toLowerCase()]!==undefined){document.querySelectorAll('.answer-btn')[map[e.key.toLowerCase()]]?.click()}if(e.key==='1')useLifeline('5050');if(e.key==='2')useLifeline('hint');if(e.key==='3')useLifeline('swap')});
 
+  window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();deferredInstallPrompt=e;setInstallVisible(true)});
+  window.addEventListener('appinstalled',()=>{deferredInstallPrompt=null;setInstallVisible(false)});
+  const iosInstall=typeof navigator!=='undefined'&&/iphone|ipad|ipod/i.test(navigator.userAgent||'')&&!window.navigator.standalone&&typeof location!=='undefined'&&location.protocol==='https:';
+  if(iosInstall)setInstallVisible(true);
+  if(typeof navigator!=='undefined'&&'serviceWorker' in navigator&&typeof location!=='undefined'&&/^https?:$/.test(location.protocol)){
+    window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}));
+  }
   state.sound=persist.sound!==false;setSound(state.sound);showScreen('screen-home');
 })();
-

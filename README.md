@@ -1,4 +1,4 @@
-# Atrapa a Claret · v0.3.1
+# Atrapa a Claret · v0.3.2 PWA
 
 Juego educativo de Luis A. García y Fernando Soriano / Claret Sevilla.
 
@@ -7,6 +7,13 @@ Juego educativo de Luis A. García y Fernando Soriano / Claret Sevilla.
 **https://lagi2000.github.io/atrapa-a-claret/**
 
 El repositorio incluye un flujo de GitHub Actions que valida la lógica y publica `public/` en GitHub Pages con cada cambio en `main`.
+
+## Instalar como aplicación
+
+- Android, Windows, macOS y ChromeOS: usa el botón **Instalar app** cuando aparezca en la portada.
+- iPhone/iPad: pulsa **Instalar app** y sigue la indicación **Compartir → Añadir a pantalla de inicio**.
+- Una vez instalada se abre en una ventana independiente, a pantalla completa y puede jugarse sin conexión.
+- El progreso y el sonido continúan guardándose únicamente en el dispositivo.
 
 ## Jugar localmente
 

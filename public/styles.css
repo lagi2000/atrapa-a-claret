@@ -283,3 +283,14 @@ h1,h2,.brand-mini,.phase-pill,.score-pill,.panel-label,.btn,.lifeline b,.eyebrow
  .result-card,.victory-card{grid-template-columns:18% 1fr}.result-claret,.victory-claret{width:100%;height:auto;max-height:calc(100dvh - 74px)}
  .badge-reveal{display:inline-grid;margin:2px 8px}.badge-reveal-coin{width:68px}.badge-track{display:inline-flex;vertical-align:middle}
 }
+
+/* PWA installation */
+.pwa-install{font-family:var(--font-display);background:linear-gradient(180deg,#ffd861,#ee9e13);color:#4a270d;border-color:#fff6a7;box-shadow:inset 0 2px 0 #fff8,0 5px 0 #84480b,0 10px 22px #00255266}
+.pwa-install[hidden]{display:none!important}
+.pwa-install-desktop{position:fixed;z-index:110;left:max(16px,env(safe-area-inset-left));bottom:max(16px,env(safe-area-inset-bottom));min-height:44px;padding:9px 16px;font-size:12px}
+.pwa-install-mobile{display:none}
+body:not([data-screen="screen-home"]) .pwa-install{display:none!important}
+@media(max-width:720px){
+ .pwa-install-desktop{display:none!important}
+ .pwa-install-mobile.available{display:block;width:100%;min-height:42px;padding:8px 12px;font-size:12px}
+}
