@@ -342,3 +342,95 @@ body:not([data-screen="screen-home"]) .pwa-install{display:none!important}
 @media(orientation:landscape){
  .screen-home .cover-wrap{width:min(100vw,177.68dvh);height:min(100dvh,56.28vw);max-width:none;max-height:none;aspect-ratio:1672/941;margin:0;overflow:hidden}
 }
+
+/* v0.3.5 · cohesive game stage, integrated character and prize ceremony */
+.claret-zone{
+ isolation:isolate;align-self:stretch;overflow:hidden;border:5px solid var(--wood);
+ border-radius:32px 32px 18px 18px;background:linear-gradient(155deg,#fff7d9 0%,#f3d391 68%,#d9953c 100%);
+ box-shadow:inset 0 0 0 2px #f8c568,inset 0 0 45px #9b571c38,0 16px 32px #001d3a66;
+}
+.claret-zone:before{content:"";position:absolute;z-index:-1;inset:7%;border-radius:50%;background:radial-gradient(circle,#fffce9 0 36%,#ffd26099 60%,transparent 73%)}
+.claret-zone:after{content:"";position:absolute;left:-12%;right:-12%;bottom:-10%;height:30%;border-radius:50%;background:linear-gradient(#ba6a22,#6b3518);box-shadow:inset 0 5px 0 #e8a64d}
+.claret-zone img{border:0!important;border-radius:0!important;background:transparent!important;box-shadow:none!important;max-height:67vh;filter:drop-shadow(0 16px 18px #4d2a1b55);animation:claretBreathe 3.2s ease-in-out infinite;mix-blend-mode:multiply}
+.claret-bubble{right:8px;top:7%;max-width:190px}
+@keyframes claretBreathe{0%,100%{transform:translateY(2px) scale(1)}50%{transform:translateY(-5px) scale(1.012)}}
+
+.success-card{grid-template-columns:minmax(220px,31%) minmax(0,1fr);gap:clamp(18px,3vw,42px);padding:clamp(20px,3vw,38px);overflow:visible}
+.success-card .result-claret{align-self:end;width:100%;max-height:72vh;border:0;background:transparent;box-shadow:none;border-radius:0;filter:drop-shadow(0 18px 22px #4b2a1955);mix-blend-mode:multiply}
+.success-card .result-copy{min-width:0}
+.success-card .eyebrow{margin:0 0 4px;font-size:clamp(14px,1.7vw,20px)}
+.success-card .result-copy h1{margin:4px 0 7px;font-size:clamp(31px,4.3vw,58px);overflow-wrap:normal;word-break:normal}
+.success-card #resultPhase{margin:4px 0;font-size:clamp(15px,1.5vw,19px)}
+.success-card .screen-quote{margin:6px auto;font-size:clamp(13px,1.25vw,17px)}
+.success-card .badge-reveal{position:relative;margin:6px auto 4px;gap:2px;isolation:isolate}
+.success-card .badge-reveal:before,.success-card .badge-reveal:after{content:"";position:absolute;z-index:-1;left:50%;top:42%;transform:translate(-50%,-50%);border-radius:50%;pointer-events:none}
+.success-card .badge-reveal:before{width:min(38vw,285px);aspect-ratio:1;background:repeating-conic-gradient(from 0deg,#ffd758 0 5deg,transparent 5deg 14deg);opacity:.38;animation:rewardRays 8s linear infinite}
+.success-card .badge-reveal:after{width:min(26vw,205px);aspect-ratio:1;background:radial-gradient(circle,#fff9bccc 0,#ffbf3f66 38%,transparent 70%);filter:blur(9px);animation:rewardGlow 1.45s ease-in-out infinite alternate}
+.success-card .badge-reveal-coin{width:min(25vh,205px);max-width:205px;position:relative;z-index:2;filter:drop-shadow(0 16px 20px #65320d66) drop-shadow(0 0 22px #ffc42d)}
+.success-card .badge-reveal-coin.animate{animation:coinSpinIn 1.55s cubic-bezier(.16,.76,.2,1) both,medalFloat 2.4s 1.55s ease-in-out infinite}
+.success-card .badge-reveal-name{font-size:clamp(13px,1.4vw,18px)}
+.success-card .badge-track{flex-wrap:nowrap;gap:6px;margin:5px 0 10px}
+.success-card .badge-chip{width:64px;min-height:72px;border-radius:14px;padding:4px;font-size:8px}
+.success-card .badge-chip img{width:43px;height:43px;margin:0 auto 2px}
+.success-card #continuePhaseBtn{min-width:190px}
+@keyframes rewardRays{to{transform:translate(-50%,-50%) rotate(360deg)}}
+@keyframes rewardGlow{from{opacity:.58;transform:translate(-50%,-50%) scale(.9)}to{opacity:1;transform:translate(-50%,-50%) scale(1.12)}}
+@keyframes medalFloat{0%,100%{transform:translateY(0) rotateY(1440deg)}50%{transform:translateY(-7px) rotateY(1440deg)}}
+
+/* Exact cover fitting: avoids mixed cached dimensions and never crops. */
+@media(orientation:portrait){
+ .screen-home .cover-wrap{width:100vw;height:auto;max-width:none;max-height:none;aspect-ratio:941/1672;margin:auto}
+ .screen-home .cover-picture,.screen-home .cover-image{width:100%;height:100%}
+}
+@media(orientation:portrait) and (min-aspect-ratio:941/1672){
+ .screen-home .cover-wrap{width:auto;height:100dvh}
+}
+@media(orientation:landscape){
+ .screen-home .cover-wrap{width:auto;height:100dvh;max-width:none;max-height:none;aspect-ratio:1672/941;margin:auto}
+}
+@media(orientation:landscape) and (max-aspect-ratio:1672/941){
+ .screen-home .cover-wrap{width:100vw;height:auto}
+}
+
+@media(max-width:720px) and (orientation:portrait){
+ .game-main{position:relative;display:block;overflow:hidden}
+ .claret-zone{position:absolute;z-index:4;left:6px;top:7px;width:92px;height:124px;min-height:0;margin:0;padding:0;border-width:3px;border-radius:25px 25px 13px 13px;display:flex;align-items:flex-end;justify-content:center}
+ .claret-zone img{position:relative;width:100px;height:145px;max-height:none;object-fit:contain;object-position:center bottom;transform:none;animation:claretBreathe 3.2s ease-in-out infinite}
+ .claret-zone:after{bottom:-8%;height:24%}
+ .claret-aura,.claret-bubble{display:none!important}
+ .quiz-zone{height:100%;display:grid;grid-template-rows:minmax(126px,auto) minmax(0,1fr) auto;gap:6px}
+ .question-panel{min-height:126px;margin:8px 0 0;padding:29px 10px 9px 108px;display:grid;align-content:center}
+ .question-text{min-height:68px;font-size:clamp(16px,4.6vw,21px);line-height:1.13}
+
+ .success-card{position:relative;display:block!important;width:100%;height:calc(100dvh - 59px);padding:12px 10px 10px;overflow:hidden;text-align:center}
+ .success-card .result-claret{position:absolute;z-index:1;left:-10px;top:14px;width:31%;height:31%;max-height:none;object-fit:contain;object-position:center bottom;opacity:.98}
+ .success-card .result-copy{position:relative;z-index:2;width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;min-width:0;padding:0}
+ .success-card .eyebrow{align-self:flex-end;width:69%;margin:3px 0 1px;font-size:11px}
+ .success-card .result-copy h1{align-self:flex-end;width:69%;min-height:54px;display:grid;place-items:center;margin:0 0 3px;font-size:clamp(22px,7vw,31px);line-height:1.02}
+ .success-card #resultPhase{align-self:flex-end;width:69%;margin:0!important;font-size:12px!important}
+ .success-card .screen-quote{max-width:92%;margin:5px auto 1px;font-size:10px;line-height:1.18}
+ .success-card .badge-reveal{margin:2px auto 0;gap:0}
+ .success-card .badge-reveal:before{width:min(40dvh,230px)}
+ .success-card .badge-reveal:after{width:min(29dvh,168px)}
+ .success-card .badge-reveal-coin{width:min(23dvh,160px);max-width:160px}
+ .success-card .badge-reveal-name{font-size:12px;line-height:1.05;letter-spacing:.07em}
+ .success-card .badge-track{width:100%;gap:3px;margin:3px 0 6px}
+ .success-card .badge-chip{width:20%;min-width:0;min-height:51px;border-radius:9px;padding:2px;font-size:6px}
+ .success-card .badge-chip img{width:32px;height:32px;margin:0 auto 1px}
+ .success-card #continuePhaseBtn{width:min(86%,310px);min-height:43px;padding:8px 14px;font-size:12px;margin-top:auto}
+}
+
+@media(max-height:560px) and (orientation:landscape){
+ .game-main{margin-top:38px;position:relative}
+ .claret-zone{display:flex;position:absolute;z-index:4;left:4px;bottom:4px;width:86px;height:116px;min-height:0;border-width:3px;border-radius:22px 22px 12px 12px}
+ .claret-zone img{width:94px;height:130px;max-height:none;object-fit:contain;object-position:center bottom}
+ .claret-aura,.claret-bubble{display:none!important}
+ .quiz-zone{grid-template-columns:minmax(220px,34%) minmax(0,1fr)}
+ .question-panel{padding:28px 8px 8px 94px}
+ .success-card{display:grid!important;grid-template-columns:18% 1fr;gap:8px;padding:8px 16px}
+ .success-card .result-claret{position:static;width:100%;height:auto;max-height:calc(100dvh - 68px)}
+ .success-card .badge-reveal{display:inline-grid;margin:0 6px}
+ .success-card .badge-reveal-coin{width:84px}
+ .success-card .badge-reveal:before{width:120px}.success-card .badge-reveal:after{width:95px}
+ .success-card .badge-track{display:inline-flex;vertical-align:middle;margin:2px 4px}
+}

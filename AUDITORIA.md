@@ -52,3 +52,5 @@ Proyecto preparado para el repositorio público `lagi2000/atrapa-a-claret`, con 
 La v0.3.2 añade manifiesto PWA, iconos para escritorio/Android/iOS, ejecución independiente, caché completa para juego sin conexión y actualización del caché por versión.
 
 La v0.3.3 elimina la botonera móvil duplicada. La v0.3.4 sustituye el recorte ampliado por dos portadas completas: 16:9 en horizontal y 9:16 en vertical. El navegador selecciona la composición al girar el dispositivo y mantiene una única capa de zonas táctiles alineada con los botones dibujados.
+
+La v0.3.5 corrige la composición de juego y resultados: Claret deja de mostrarse como miniatura aislada y pasa a ocupar un escenario integrado; la insignia obtenida se convierte en el foco principal mediante giro, halo, destello y una jerarquía adaptable sin fragmentar palabras en móvil.
