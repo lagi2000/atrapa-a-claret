@@ -50,3 +50,5 @@ Las preguntas sobre presencia y superior general quedan referidas a septiembre d
 Proyecto preparado para el repositorio público `lagi2000/atrapa-a-claret`, con validación y despliegue de `public/` mediante GitHub Actions. Enlace previsto: https://lagi2000.github.io/atrapa-a-claret/
 
 La v0.3.2 añade manifiesto PWA, iconos para escritorio/Android/iOS, ejecución independiente, caché completa para juego sin conexión y actualización del caché por versión.
+
+La v0.3.3 elimina la botonera móvil duplicada. La portada aprobada conserva una única capa de botones interactivos y cambia automáticamente entre encuadre vertical ampliado y vista horizontal completa.

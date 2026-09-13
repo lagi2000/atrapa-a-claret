@@ -294,3 +294,31 @@ body:not([data-screen="screen-home"]) .pwa-install{display:none!important}
  .pwa-install-desktop{display:none!important}
  .pwa-install-mobile.available{display:block;width:100%;min-height:42px;padding:8px 12px;font-size:12px}
 }
+
+/* v0.3.3 · single interactive cover, responsive to device orientation */
+.screen-home{isolation:isolate;overflow:hidden}
+.screen-home:before{content:"";position:absolute;z-index:-2;inset:-32px;background-image:linear-gradient(rgba(3,24,63,.48),rgba(3,24,63,.66)),url(assets/cover.webp);background-size:cover;background-position:center;filter:blur(18px) saturate(1.08);transform:scale(1.09)}
+.screen-home:after{content:"";position:absolute;z-index:-1;inset:0;background:radial-gradient(ellipse at center,transparent 28%,rgba(2,18,52,.48) 100%);pointer-events:none}
+.screen-home .mobile-home-controls{display:none!important}
+.screen-home .hotspot{display:block!important;z-index:7}
+.screen-home .cover-wrap{flex:0 0 auto;overflow:visible}
+.creator-plate-desktop{position:absolute;z-index:8;left:50%;bottom:max(7px,env(safe-area-inset-bottom));transform:translateX(-50%);margin:0}
+.sound-toggle[hidden]{display:none!important}
+
+@media(max-width:720px) and (orientation:portrait){
+ .screen-home.active{display:flex;align-items:center;justify-content:center;padding:0;overflow:hidden;background:#082f59}
+ .screen-home .cover-wrap{width:min(190vw,calc(82dvh * 1.7768));max-width:none;max-height:none;aspect-ratio:1672/941;margin:0}
+ .screen-home .cover-image{width:100%;height:100%;object-fit:contain;filter:drop-shadow(0 18px 40px rgba(0,17,48,.58))}
+ .screen-home .hotspot{min-height:44px}
+ .creator-plate-desktop{display:none}
+ body[data-screen="screen-home"] .pwa-install-desktop.available{display:block!important;left:50%;bottom:max(9px,env(safe-area-inset-bottom));transform:translateX(-50%);width:max-content;max-width:80vw;min-height:40px;padding:7px 13px;font-size:10px}
+ .pwa-install-mobile{display:none!important}
+}
+
+@media(max-width:1100px) and (orientation:landscape){
+ .screen-home.active{display:flex;align-items:center;justify-content:center;padding:0;overflow:hidden}
+ .screen-home .cover-wrap{width:min(100vw,177.68dvh);height:auto;max-width:none;max-height:100dvh;aspect-ratio:1672/941;margin:0}
+ .screen-home .cover-image{width:100%;height:100%;object-fit:contain}
+ .screen-home .hotspot{min-height:0}
+ .creator-plate-desktop{display:none}
+}
