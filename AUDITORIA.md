@@ -24,9 +24,12 @@ Los archivos recuperados simulaban transparencia con una cuadrícula. La extracc
 
 - Escritorio: dos columnas, pregunta protagonista y personaje lateral.
 - Tablet de 721–1100 px: cabecera compacta, personaje reducido y respuestas en dos columnas.
-- Smartphone hasta 720 px: respuestas en columna, zona independiente del personaje y controles táctiles.
-- Horizontal de poca altura: desplazamiento vertical permitido, sin imponer una pantalla fija.
+- Smartphone hasta 720 px: respuestas en columna, Claret integrado en el panel y controles táctiles compactos.
+- Horizontal de poca altura: pregunta y respuestas se distribuyen en dos zonas para conservar una sola vista.
+- Portada, prefases, juego, resultados y ventanas usan la altura dinámica disponible sin scroll.
 - Formulario compatible con zoom móvil y preferencia de movimiento reducido.
+
+La v0.3.1 incorpora un sistema tipográfico multiplataforma: fuente redondeada para títulos y controles, fuente de lectura para preguntas y textos narrativos, y fuente de interfaz del sistema para información funcional.
 
 **Límite de verificación:** no se completó una prueba renderizada en Chrome, Safari ni dispositivos reales. El navegador del entorno bloqueó tanto el servidor local como la apertura de archivos. Las pruebas de lógica usan un adaptador de DOM, no un navegador completo. La compatibilidad visual debe comprobarse tras publicar.
 

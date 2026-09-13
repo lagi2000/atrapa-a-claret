@@ -1,4 +1,4 @@
-# Atrapa a Claret · v0.3.0
+# Atrapa a Claret · v0.3.1
 
 Juego educativo de Luis A. García y Fernando Soriano / Claret Sevilla.
 
@@ -26,7 +26,8 @@ Abre `public/index.html` en un navegador moderno, o usa el HTML autocontenido en
 
 - PC/Mac: ratón, A–D para respuestas, 1–3 para comodines y Escape para menú.
 - Tablet: controles táctiles y diseño intermedio; vertical y horizontal.
-- Smartphone: respuestas apiladas, personaje y controles con espacio propio; desplazamiento vertical para pantallas bajas.
+- Smartphone: respuestas apiladas, Claret integrado en el panel y controles táctiles compactos.
+- Las pantallas principales se ajustan a una sola vista mediante unidades dinámicas de pantalla, sin scroll durante la partida.
 - Controles táctiles de al menos 44 px, fuentes de formulario de 16 px y respeto a movimiento reducido.
 - El historial y el sonido se guardan en el navegador. Si el almacenamiento falla, la partida continúa en memoria. No hay sincronización entre dispositivos ni guardado de una partida interrumpida.
 
