@@ -51,4 +51,4 @@ Proyecto preparado para el repositorio público `lagi2000/atrapa-a-claret`, con 
 
 La v0.3.2 añade manifiesto PWA, iconos para escritorio/Android/iOS, ejecución independiente, caché completa para juego sin conexión y actualización del caché por versión.
 
-La v0.3.3 elimina la botonera móvil duplicada. La portada aprobada conserva una única capa de botones interactivos y cambia automáticamente entre encuadre vertical ampliado y vista horizontal completa.
+La v0.3.3 elimina la botonera móvil duplicada. La v0.3.4 sustituye el recorte ampliado por dos portadas completas: 16:9 en horizontal y 9:16 en vertical. El navegador selecciona la composición al girar el dispositivo y mantiene una única capa de zonas táctiles alineada con los botones dibujados.

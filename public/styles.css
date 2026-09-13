@@ -322,3 +322,23 @@ body:not([data-screen="screen-home"]) .pwa-install{display:none!important}
  .screen-home .hotspot{min-height:0}
  .creator-plate-desktop{display:none}
 }
+
+/* v0.3.4 · two native covers, one interactive layer */
+.cover-picture{display:block;width:100%;height:100%}
+.cover-picture .cover-image{display:block;width:100%;height:100%;object-fit:contain}
+
+@media(orientation:portrait){
+ .screen-home:before{background-image:linear-gradient(rgba(3,24,63,.32),rgba(3,24,63,.54)),url(assets/cover-portrait.webp)}
+ .screen-home.active{display:flex;align-items:center;justify-content:center;padding:0;overflow:hidden;background:#082f59}
+ .screen-home .cover-wrap{width:min(100vw,56.28dvh);height:min(100dvh,177.66vw);max-width:none;max-height:none;aspect-ratio:941/1672;margin:0;overflow:hidden;filter:drop-shadow(0 18px 40px rgba(0,17,48,.58))}
+ .screen-home .play-hotspot{left:23.8%;top:55.6%;width:52.5%;height:8.3%}
+ .screen-home .how-hotspot{left:23.8%;top:64.3%;width:52.5%;height:6.8%}
+ .screen-home .credits-hotspot{left:23.8%;top:71.3%;width:52.5%;height:6.7%}
+ .screen-home .info-hotspot{display:none!important}
+ .creator-plate-desktop{display:none}
+ body[data-screen="screen-home"] .pwa-install-desktop.available{display:block!important;left:auto;right:max(10px,env(safe-area-inset-right));bottom:max(10px,env(safe-area-inset-bottom));transform:none;width:auto;max-width:38vw;min-height:38px;padding:7px 11px;font-size:9px;opacity:.92}
+}
+
+@media(orientation:landscape){
+ .screen-home .cover-wrap{width:min(100vw,177.68dvh);height:min(100dvh,56.28vw);max-width:none;max-height:none;aspect-ratio:1672/941;margin:0;overflow:hidden}
+}

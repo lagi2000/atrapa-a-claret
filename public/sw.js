@@ -1,4 +1,4 @@
-const CACHE_NAME = 'atrapa-claret-v0.3.3';
+const CACHE_NAME = 'atrapa-claret-v0.3.4';
 const APP_SHELL = [
   './',
   './index.html',
@@ -11,6 +11,7 @@ const APP_SHELL = [
   './assets/icon-maskable-512.png',
   './assets/apple-touch-icon.png',
   './assets/cover.webp',
+  './assets/cover-portrait.webp',
   './assets/asset-2.webp',
   './assets/asset-3.webp',
   './assets/asset-4.webp',

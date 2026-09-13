@@ -1,4 +1,4 @@
-# Atrapa a Claret · v0.3.3 PWA
+# Atrapa a Claret · v0.3.4 PWA
 
 Juego educativo de Luis A. García y Fernando Soriano / Claret Sevilla.
 
@@ -15,7 +15,7 @@ El repositorio incluye un flujo de GitHub Actions que valida la lógica y public
 - Una vez instalada se abre en una ventana independiente, a pantalla completa y puede jugarse sin conexión.
 - El progreso y el sonido continúan guardándose únicamente en el dispositivo.
 
-La portada utiliza una sola botonera: las zonas pulsables coinciden con los botones dibujados en la imagen. En teléfono y tableta adapta el encuadre automáticamente al cambiar entre orientación vertical y horizontal.
+La portada utiliza una sola botonera: las zonas pulsables coinciden con los botones dibujados en la imagen. Hay dos composiciones nativas, horizontal (16:9) y vertical (9:16), que se seleccionan automáticamente al girar teléfono o tableta.
 
 ## Jugar localmente
 
@@ -42,7 +42,7 @@ Abre `public/index.html` en un navegador moderno, o usa el HTML autocontenido en
 
 ## Verificación
 
-Ejecuta `node tests/logic.cjs` (Node, sin instalar paquetes). Doce grupos de pruebas de lógica, incluyendo validación de 79 preguntas, barajado de respuestas, recorrido de 25 aciertos, vidas, comodines, reinicios y almacenamiento defectuoso.
+Ejecuta `node tests/logic.cjs` (Node, sin instalar paquetes). Catorce grupos de pruebas de lógica y estructura, incluyendo validación de 79 preguntas, barajado de respuestas, recorrido de 25 aciertos, vidas, comodines, reinicios, almacenamiento defectuoso y portadas por orientación.
 
 Las pruebas usan un adaptador de DOM: no equivalen a una prueba visual en Safari, Chrome ni dispositivos físicos. El navegador disponible bloqueó la apertura local; esa revisión sigue pendiente. El contraste documental de esta sesión fue selectivo, no una nueva validación histórica completa de las 79 respuestas.
 

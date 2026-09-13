@@ -23,7 +23,10 @@
 
     <section id="screen-home" class="screen screen-home active" aria-label="Inicio">
       <div class="cover-wrap">
-        <img src="assets/cover.webp" alt="Atrapa a Claret. ¿Hasta dónde conoces su historia?" class="cover-image" />
+        <picture class="cover-picture">
+          <source media="(orientation: portrait)" srcset="assets/cover-portrait.webp" />
+          <img src="assets/cover.webp" alt="Atrapa a Claret. ¿Hasta dónde conoces su historia?" class="cover-image" />
+        </picture>
         <div class="cover-credit-cleaner" aria-hidden="true"></div>
         <button class="hotspot play-hotspot" data-action="play" aria-label="Jugar"></button>
         <button class="hotspot how-hotspot" data-action="how" aria-label="Cómo jugar"></button>
@@ -31,15 +34,6 @@
         <button class="hotspot info-hotspot" data-action="how" aria-label="Información y reglas del juego"></button>
       </div>
       <div class="creator-plate-desktop">Creado por Luis A. García y Fernando Soriano / Claret Sevilla</div>
-      <div class="mobile-home-controls">
-        <button class="btn btn-primary" data-action="play">JUGAR ▶</button>
-        <div class="mobile-secondary-row">
-          <button class="btn btn-secondary" data-action="how">CÓMO JUGAR</button>
-          <button class="btn btn-secondary" data-action="credits">CRÉDITOS</button>
-        </div>
-        <button class="btn pwa-install pwa-install-mobile" data-action="install" hidden>INSTALAR APP</button>
-        <div class="creator-plate">Creado por Luis A. García y Fernando Soriano / Claret Sevilla</div>
-      </div>
     </section>
 
     <section id="screen-how" class="screen modal-screen" aria-label="Cómo jugar">
@@ -66,7 +60,7 @@
         <div class="credits-block"><strong>Idea y creación</strong><span>Luis A. García y Fernando Soriano</span></div>
         <div class="credits-block"><strong>Centro de referencia</strong><span>Claret Sevilla</span></div>
         <div class="credits-block"><strong>Fuentes</strong><span>Autobiografía de san Antonio María Claret, documentación oficial claretiana y fuentes institucionales verificadas.</span></div>
-        <p class="version">Versión profesional v0.3.3 PWA · 79 preguntas</p>
+        <p class="version">Versión profesional v0.3.4 PWA · 79 preguntas</p>
         <button class="btn btn-secondary" data-action="home">VOLVER</button>
       </div>
     </section>
