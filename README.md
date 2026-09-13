@@ -2,17 +2,11 @@
 
 Juego educativo de Luis A. García y Fernando Soriano / Claret Sevilla.
 
-## Publicar en un repositorio nuevo
+## Jugar en línea
 
-1. Crea el repositorio público **atrapa-a-claret**, con un README inicial.
-2. Sube el contenido de este paquete. Mantén `public/` con su estructura completa.
-3. En Settings → Pages selecciona **GitHub Actions**.
-4. El flujo incluido publicará `public/` al subir cambios a `main` o al ejecutarlo manualmente.
-5. Copia el enlace que aparezca en Pages cuando termine correctamente. Ese es el enlace para compartir.
+**https://lagi2000.github.io/atrapa-a-claret/**
 
-La creación del repositorio y la activación de Pages requieren una acción en tu cuenta. Esta entrega no está publicada todavía.
-
-Documentación oficial: https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site
+El repositorio incluye un flujo de GitHub Actions que valida la lógica y publica `public/` en GitHub Pages con cada cambio en `main`.
 
 ## Jugar localmente
 
@@ -21,6 +15,7 @@ Abre `public/index.html` en un navegador moderno, o usa el HTML autocontenido en
 ## Reglas preservadas
 
 - Cinco fases; cinco aciertos por fase, no necesariamente consecutivos.
+- Cada fase comienza con una presentación de su tema, escenario y objetivo.
 - Tres Corazones de María. Los fallos restan vidas, no aciertos.
 - 50:50, pista y cambio: una vez cada uno por partida, un comodín por pregunta.
 - Cambiar de ruta no permite encadenar otro comodín en la pregunta sustituta.

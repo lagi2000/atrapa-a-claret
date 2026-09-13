@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <meta name="theme-color" content="#087ac5" />
+  <meta name="description" content="Atrapa a Claret · ¿Hasta dónde conoces su historia?" />
+  <title>Atrapa a Claret</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="app" class="app-shell">
+    <button id="soundToggle" class="sound-toggle" aria-label="Desactivar sonido" aria-pressed="true" title="Desactivar sonido">🔊</button>
+    <button id="homeToggle" class="home-toggle" data-action="home" aria-label="Volver al menú principal" title="Menú principal" hidden>⌂</button>
+
+    <section id="screen-home" class="screen screen-home active" aria-label="Inicio">
+      <div class="cover-wrap">
+        <img src="assets/cover.webp" alt="Atrapa a Claret. ¿Hasta dónde conoces su historia?" class="cover-image" />
+        <div class="cover-credit-cleaner" aria-hidden="true"></div>
+        <button class="hotspot play-hotspot" data-action="play" aria-label="Jugar"></button>
+        <button class="hotspot how-hotspot" data-action="how" aria-label="Cómo jugar"></button>
+        <button class="hotspot credits-hotspot" data-action="credits" aria-label="Créditos"></button>
+        <button class="hotspot info-hotspot" data-action="how" aria-label="Información y reglas del juego"></button>
+      </div>
+      <div class="creator-plate-desktop">Creado por Luis A. García y Fernando Soriano / Claret Sevilla</div>
+      <div class="mobile-home-controls">
+        <button class="btn btn-primary" data-action="play">JUGAR ▶</button>
+        <div class="mobile-secondary-row">
+          <button class="btn btn-secondary" data-action="how">CÓMO JUGAR</button>
+          <button class="btn btn-secondary" data-action="credits">CRÉDITOS</button>
+        </div>
+        <div class="creator-plate">Creado por Luis A. García y Fernando Soriano / Claret Sevilla</div>
+      </div>
+    </section>
+
+    <section id="screen-how" class="screen modal-screen" aria-label="Cómo jugar">
+      <div class="modal-card wide-card">
+        <button class="close-x" data-action="home" aria-label="Cerrar">×</button>
+        <h1>CÓMO JUGAR</h1>
+        <div class="rules-grid">
+          <article><span class="rule-num">1</span><h2>5 fases</h2><p>Recorre la vida y el legado de Claret en cinco etapas.</p></article>
+          <article><span class="rule-num">2</span><h2>5 aciertos</h2><p>Consigue 5 respuestas correctas para superar cada fase. No tienen que ser consecutivas.</p></article>
+          <article><span class="rule-num">3</span><h2>3 Corazones de María</h2><p>Cada error hace perder una vida. Con el tercer fallo termina la partida.</p></article>
+          <article><span class="rule-num">4</span><h2>3 comodines</h2><p>50:50, Pista y Cambio de ruta. Cada uno puede usarse una sola vez por partida y solo uno por pregunta.</p></article>
+        </div>
+        <div class="how-badges"><span>APRENDIZ</span><span>CONOCEDOR</span><span>EXPERTO</span><span>MAESTRO</span><span>EMBAJADOR</span></div>
+        <button class="btn btn-primary" data-action="play">EMPEZAR</button>
+      </div>
+    </section>
+
+    <section id="screen-credits" class="screen modal-screen" aria-label="Créditos">
+      <div class="modal-card credits-card">
+        <button class="close-x" data-action="home" aria-label="Cerrar">×</button>
+        <h1>CRÉDITOS</h1>
+        <p class="credits-kicker">ATRAPA A CLARET</p>
+        <p class="credits-sub">¿Hasta dónde conoces su historia?</p>
+        <div class="credits-block"><strong>Idea y creación</strong><span>Luis A. García y Fernando Soriano</span></div>
+        <div class="credits-block"><strong>Centro de referencia</strong><span>Claret Sevilla</span></div>
+        <div class="credits-block"><strong>Fuentes</strong><span>Autobiografía de san Antonio María Claret, documentación oficial claretiana y fuentes institucionales verificadas.</span></div>
+        <p class="version">Versión profesional v0.3.0 · 79 preguntas</p>
+        <button class="btn btn-secondary" data-action="home">VOLVER</button>
+      </div>
+    </section>
+
+    <section id="screen-phase-intro" class="screen phase-intro-screen" aria-label="Presentación de la fase">
+      <div id="phaseIntroBackdrop" class="phase-intro-backdrop" aria-hidden="true"></div>
+      <div class="phase-intro-card">
+        <img src="assets/claret-presentador.webp" alt="Claret presenta la nueva fase" class="phase-intro-claret" />
+        <div class="phase-intro-copy">
+          <p id="introPhaseIndex" class="phase-intro-kicker">FASE 1 DE 5</p>
+          <h1 id="introPhaseTitle">INFANCIA Y FORMACIÓN</h1>
+          <p id="introPhaseDescription" class="phase-intro-description"></p>
+          <p class="phase-intro-goal"><strong>Tu reto:</strong> consigue 5 aciertos antes de perder los 3 Corazones de María.</p>
+          <button id="introStartBtn" class="btn btn-primary" data-action="begin-phase">COMENZAR FASE</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="screen-game" class="screen game-screen" aria-label="Juego">
+      <div class="game-backdrop"></div>
+      <header class="hud">
+        <div class="brand-mini"><span class="flame">🔥</span><span>ATRAPA A<br><b>CLARET</b></span></div>
+        <div class="phase-pill"><span id="phaseIndex">FASE 1/5</span><b id="phaseName">INFANCIA Y FORMACIÓN</b></div>
+        <div class="score-pill">ACIERTOS <strong id="phaseScore">0/5</strong></div>
+        <div id="lives" class="lives" aria-label="Vidas"></div>
+      </header>
+
+      <div class="lifelines" aria-label="Comodines">
+        <button class="lifeline" data-lifeline="5050"><span class="life-icon">◐</span><b>50:50</b><small>Elimina dos respuestas</small></button>
+        <button class="lifeline" data-lifeline="hint"><span class="life-icon">💡</span><b>PISTA</b><small>Recibe una ayuda</small></button>
+        <button class="lifeline" data-lifeline="swap"><span class="life-icon">↻</span><b>CAMBIO</b><small>Cambia la pregunta</small></button>
+      </div>
+
+      <main class="game-main">
+        <aside class="claret-zone">
+          <div id="claretAura" class="claret-aura"></div>
+          <img id="claretImg" src="assets/claret-presentador.webp" alt="Claret acompaña la partida" />
+          <div id="claretBubble" class="claret-bubble">Piensa bien… ¡tú puedes!</div>
+        </aside>
+
+        <section class="quiz-zone">
+          <div class="question-panel">
+            <div class="panel-label">PREGUNTA</div>
+            <div id="questionText" class="question-text">Cargando pregunta…</div>
+            <div id="progressDots" class="progress-dots" aria-label="Progreso de la fase"></div>
+            <div id="hintBox" class="hint-box hidden"><strong>PISTA CLARETIANA</strong><span id="hintText"></span></div>
+          </div>
+          <div id="answers" class="answers-grid" aria-label="Respuestas"></div>
+          <div id="feedback" class="feedback-bar" aria-live="polite">
+            <span class="feedback-icon">☝</span><span id="feedbackText">Selecciona una respuesta</span>
+          </div>
+        </section>
+      </main>
+    </section>
+
+    <section id="screen-phase-result" class="screen result-screen" aria-label="Resultado de fase">
+      <div class="result-card success-card">
+        <div class="result-glow"></div>
+        <img src="assets/claret-celebracion.webp" alt="Claret celebra" class="result-claret happy" />
+        <div class="result-copy">
+          <p class="eyebrow">FASE SUPERADA</p>
+          <h1 id="resultBadge">APRENDIZ CLARETIANO</h1>
+          <p id="resultPhase">Has conseguido 5 aciertos.</p>
+          <p class="screen-quote">«Procura por todos los medios encender a todo el mundo en el fuego del divino amor.»</p>
+          <div class="badge-reveal"><img id="badgeRevealImg" class="badge-reveal-coin" alt="Insignia conseguida" /><div id="badgeRevealName" class="badge-reveal-name"></div></div>
+          <div id="badgeTrack" class="badge-track"></div>
+          <button id="continuePhaseBtn" class="btn btn-primary">CONTINUAR</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="screen-gameover" class="screen result-screen" aria-label="Fin de la partida">
+      <div class="result-card gameover-card">
+        <img src="assets/claret-animo.webp" alt="Claret te anima" class="result-claret encourage" />
+        <div class="result-copy">
+          <p class="eyebrow">FIN DE LA PARTIDA</p>
+          <h1>Ánimo, vuelve a intentarlo</h1>
+          <p id="gameoverText">Has llegado hasta la Fase 1.</p>
+          <p id="gameoverLevel" class="gameover-level-line">Lograste llegar al nivel inicial.</p>
+          <div id="gameoverBadgeTrack" class="badge-track"></div>
+          <p class="screen-quote">«Más buen partido se saca del andar con dulzura que con aspereza y enfado.»</p>
+          <div class="gameover-lives" id="gameoverLives"></div>
+          <p class="encourage-line">¿Quieres volver a intentarlo?</p>
+          <div class="button-row"><button class="btn btn-primary" data-action="play">INICIAR DE NUEVO</button><button class="btn btn-secondary" data-action="home">MENÚ PRINCIPAL</button></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="screen-victory" class="screen result-screen victory-screen" aria-label="Victoria">
+      <div class="victory-card">
+        <div class="victory-flame">🔥</div>
+        <img src="assets/claret-victoria.webp" alt="Claret celebra la victoria" class="victory-claret" />
+        <div class="victory-copy">
+          <p class="eyebrow">HAS ATRAPADO A CLARET</p>
+          <h1>EMBAJADOR CLARETIANO</h1>
+          <p class="victory-answer">¿Hasta dónde conoces su historia? <strong>Hasta el final.</strong></p>
+          <p class="screen-quote">«Enamoraos de Cristo y haréis cosas grandes.»</p>
+          <div id="victoryStats" class="victory-stats"></div>
+          <div class="button-row"><button class="btn btn-primary" data-action="play">JUGAR OTRA VEZ</button><button class="btn btn-special" data-action="propose">PROPÓN UNA PREGUNTA</button></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="screen-propose" class="screen modal-screen" aria-label="Proponer una pregunta">
+      <div class="modal-card wide-card form-card">
+        <button class="close-x" data-action="home" aria-label="Cerrar">×</button>
+        <h1>PROPÓN UNA NUEVA PREGUNTA</h1>
+        <p>Ayúdanos a ampliar <strong>Atrapa a Claret</strong>. La propuesta será revisada antes de incorporarse al banco oficial.</p>
+        <p>Se abrirá tu aplicación de correo para revisar y enviar la propuesta. No incluyas datos personales del alumnado.</p><form id="proposalForm">
+          <label>Pregunta<textarea name="question" required></textarea></label>
+          <div class="form-grid"><label>Respuesta A<input name="a" required></label><label>Respuesta B<input name="b" required></label><label>Respuesta C<input name="c" required></label><label>Respuesta D<input name="d" required></label></div>
+          <div class="form-grid"><label>Respuesta correcta<select name="correct"><option>A</option><option>B</option><option>C</option><option>D</option></select></label><label>Fuente<input name="source" required placeholder="Autobiografía, fuente oficial…"></label><label>N.º Autobiografía (opcional)<input name="aut"></label><label>Centro (opcional)<input name="school"></label></div>
+          <label>Curso (opcional)<input name="course"></label>
+          <div class="button-row"><button class="btn btn-special" type="submit">ABRIR CORREO CON LA PROPUESTA</button><button class="btn btn-secondary" type="button" data-action="home">VOLVER</button></div>
+        </form>
+      </div>
+    </section>
+  </div>
+
+  
+  
+<script src="data.js"></script><script src="app.js"></script></body>
+</html>
