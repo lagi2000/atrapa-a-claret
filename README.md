@@ -1,4 +1,4 @@
-# Atrapa a Claret · v0.3.6.1 PWA
+# Atrapa a Claret · v0.3.6.2 PWA
 
 Juego educativo de Luis A. García y Fernando Soriano / Claret Sevilla.
 
@@ -17,7 +17,7 @@ El repositorio incluye un flujo de GitHub Actions que valida la lógica y public
 
 La portada utiliza una sola botonera: las zonas pulsables coinciden con los botones dibujados en la imagen. Hay dos composiciones nativas, horizontal (16:9) y vertical (9:16), que se seleccionan automáticamente al girar teléfono o tableta.
 
-La v0.3.6.1 reemplaza las reglas de diseño acumuladas: Claret pertenece al panel de pregunta, las herramientas permanecen en su fila y las pantallas de premio tienen una composición explícita. Conserva las insignias originales, con giro y brillo respetando la preferencia de movimiento reducido. El giro no reinicia la partida.
+La v0.3.6.2 reemplaza las reglas de diseño acumuladas: Claret pertenece al panel de pregunta, las herramientas permanecen en su fila y las pantallas de premio tienen una composición explícita. Conserva las insignias originales, con giro y brillo respetando la preferencia de movimiento reducido. El giro no reinicia la partida.
 
 ## Jugar localmente
 
