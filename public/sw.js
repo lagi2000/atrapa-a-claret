@@ -1,10 +1,10 @@
-const CACHE_NAME = 'atrapa-claret-v0.3.6';
+const CACHE_NAME = 'atrapa-claret-v0.3.6.1';
 const APP_SHELL = [
   './',
   './index.html',
-  './styles.css?v=0.3.6',
+  './styles.css?v=0.3.6.1',
   './data.js',
-  './app.js?v=0.3.6',
+  './app.js?v=0.3.6.1',
   './manifest.webmanifest',
   './assets/icon-192.png',
   './assets/icon-512.png',
