@@ -1,4 +1,4 @@
-const CACHE_NAME = 'atrapa-claret-v0.3.5';
+const CACHE_NAME = 'atrapa-claret-v0.3.6';
 const APP_SHELL = [
   './',
   './index.html',
@@ -37,7 +37,7 @@ self.addEventListener('install', event => {
 self.addEventListener('activate', event => {
   event.waitUntil(
     caches.keys()
-      .then(keys => Promise.all(keys.filter(key => key !== CACHE_NAME).map(key => caches.delete(key))))
+      .then(keys => Promise.all(keys.filter(key => key.startsWith('atrapa-claret-') && key !== CACHE_NAME).map(key => caches.delete(key))))
       .then(() => self.clients.claim())
   );
 });

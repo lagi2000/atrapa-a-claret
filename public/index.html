@@ -60,7 +60,7 @@
         <div class="credits-block"><strong>Idea y creación</strong><span>Luis A. García y Fernando Soriano</span></div>
         <div class="credits-block"><strong>Centro de referencia</strong><span>Claret Sevilla</span></div>
         <div class="credits-block"><strong>Fuentes</strong><span>Autobiografía de san Antonio María Claret, documentación oficial claretiana y fuentes institucionales verificadas.</span></div>
-        <p class="version">Versión profesional v0.3.5 PWA · 79 preguntas</p>
+        <p class="version">Versión profesional v0.3.6 PWA · 79 preguntas</p>
         <button class="btn btn-secondary" data-action="home">VOLVER</button>
       </div>
     </section>
@@ -95,18 +95,19 @@
       </div>
 
       <main class="game-main">
-        <aside class="claret-zone">
-          <div id="claretAura" class="claret-aura"></div>
-          <img id="claretImg" src="assets/claret-presentador.webp" alt="Claret acompaña la partida" />
-          <div id="claretBubble" class="claret-bubble">Piensa bien… ¡tú puedes!</div>
-        </aside>
-
         <section class="quiz-zone">
           <div class="question-panel">
             <div class="panel-label">PREGUNTA</div>
+            <aside class="claret-zone">
+          <div id="claretAura" class="claret-aura"></div>
+          <img id="claretImg" src="assets/claret-presentador.webp" alt="Claret acompaña la partida" />
+          <div id="claretBubble" class="claret-bubble">Piensa bien… ¡tú puedes!</div>
+            </aside>
+            <div class="question-content">
             <div id="questionText" class="question-text">Cargando pregunta…</div>
             <div id="progressDots" class="progress-dots" aria-label="Progreso de la fase"></div>
             <div id="hintBox" class="hint-box hidden"><strong>PISTA CLARETIANA</strong><span id="hintText"></span></div>
+            </div>
           </div>
           <div id="answers" class="answers-grid" aria-label="Respuestas"></div>
           <div id="feedback" class="feedback-bar" aria-live="polite">

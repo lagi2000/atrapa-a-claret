@@ -130,7 +130,6 @@
     const revealImg=document.getElementById('badgeRevealImg');
     const revealName=document.getElementById('badgeRevealName');
     revealImg.src=p.img; revealName.textContent=p.badge;
-    revealImg.classList.remove('animate'); void revealImg.offsetWidth; revealImg.classList.add('animate');
     const track=document.getElementById('badgeTrack'); track.innerHTML='';
     PHASES.forEach((x,i)=>{
       const d=document.createElement('div');
@@ -139,6 +138,7 @@
       track.appendChild(d)
     });
     showScreen('screen-phase-result');
+    revealImg.classList.remove('animate'); void revealImg.offsetWidth; revealImg.classList.add('animate');
     document.getElementById('continuePhaseBtn').disabled=false;document.getElementById('continuePhaseBtn').onclick=nextOnce(()=>{tone('click');if(state.phase>=5)victory();else{state.phase++;state.phaseScore=0;state.usedQuestionIds=new Set();showPhaseIntro()}})
   }
   function gameOver(){

@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="es"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex"><title>Comprobación de orientación · Atrapa a Claret</title>
+<style>body{margin:16px;background:#eef2f6;color:#123;font:14px system-ui}header{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:12px}button,select{padding:8px;font:inherit}iframe{display:block;border:0;box-shadow:0 0 0 2px #789}#report{white-space:pre-wrap}p{max-width:900px}</style>
+<header><label>Tamaño <select id="size"><option value="390,844">Teléfono 390 × 844</option><option value="375,667">Teléfono 375 × 667</option><option value="320,568">Teléfono pequeño 320 × 568</option><option value="768,1024">Tablet 768 × 1024</option><option value="820,1180">Tablet 820 × 1180</option><option value="1366,768">Escritorio 1366 × 768</option></select></label><button id="rotate">Girar sin reiniciar</button><button id="check">Comprobar distribución</button><output id="dimensions"></output></header>
+<iframe id="game" src="index.html" title="Juego de prueba"></iframe><pre id="report" aria-live="polite"></pre>
+<p>Prueba del diseño CSS a tamaños reales de ventana, no emulación de Safari ni del hardware. Usa los botones del juego; el giro conserva la misma partida. Esta página no cambia puntuaciones ni desbloquea pantallas.</p>
+<script>
+const frame=document.querySelector('#game'),size=document.querySelector('#size');let w=390,h=844;
+function resize(){frame.style.width=w+'px';frame.style.height=h+'px';document.querySelector('#dimensions').textContent=w+' × '+h;document.querySelector('#report').textContent='';}
+size.onchange=()=>{[w,h]=size.value.split(',').map(Number);resize()};document.querySelector('#rotate').onclick=()=>{[w,h]=[h,w];resize()};
+document.querySelector('#check').onclick=()=>{
+ const d=frame.contentDocument,screen=d.querySelector('.screen.active'),issues=[];
+ const visible=e=>{const r=e.getBoundingClientRect(),s=frame.contentWindow.getComputedStyle(e);return r.width&&r.height&&s.visibility!=='hidden'&&s.display!=='none'};
+ const controls=[...screen.querySelectorAll('button')].filter(visible);
+ for(const e of [...controls,...screen.querySelectorAll('.question-text,.question-panel,.claret-zone img,.result-copy,.phase-intro-copy,.badge-reveal-coin,.cover-wrap')].filter(visible)){
+  const r=e.getBoundingClientRect(),name=e.id||e.className;
+  if(r.left< -1||r.top< -1||r.right>w+1||r.bottom>h+1)issues.push(name+': fuera de la ventana');
+  if(e.scrollWidth>e.clientWidth+2||e.scrollHeight>e.clientHeight+2)issues.push(name+': contenido excede su caja');
+ }
+ for(const e of controls){const a=e.getBoundingClientRect();for(const f of controls){if(e===f||e.contains(f)||f.contains(e))continue;const b=f.getBoundingClientRect();if(Math.min(a.right,b.right)-Math.max(a.left,b.left)>2&&Math.min(a.bottom,b.bottom)-Math.max(a.top,b.top)>2)issues.push('Botones superpuestos: '+(e.id||e.getAttribute('aria-label')||e.textContent.trim()))}}
+ document.querySelector('#report').textContent=screen.id+' · '+w+' × '+h+'\n'+(issues.length?[...new Set(issues)].join('\n'):'Sin desbordamientos ni botones superpuestos en los elementos comprobados.');
+};resize();
+</script></html>
